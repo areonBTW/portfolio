@@ -32,8 +32,9 @@
   const FINAL_HOLD = 0.7;
   const UNITS_PER_FRAME = 0.02;
 
-  // Loading: the page opens once the first two screens are in, the rest streams in order.
-  const GATE_FRAMES = STOPS[1] + 1;
+  // Loading: the page opens once the first screen plus a short run-up is in (~1.7 MB on desktop);
+  // the rest streams in order while the visitor reads the first screen.
+  const GATE_FRAMES = STOPS[0] + 31;
   const LOAD_CONCURRENCY = 10;
   const LOADER_TIMEOUT = 15000;
   const DECODE_AHEAD = 8;
