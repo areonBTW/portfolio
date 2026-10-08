@@ -1,0 +1,15 @@
+﻿.env
+node_modules/
+tmp/
+.tmp/
+__pycache__/
+.DS_Store
+output/
+
+# Video sources: only the extracted frames are published
+works/cosmos/source/
+
+# Local working files, not part of the published site
+CLAUDE.md
+references/
+.claude/
