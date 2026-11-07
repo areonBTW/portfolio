@@ -129,7 +129,8 @@
 
   const frameDir = matchMedia('(max-width: 767px)').matches ? FRAME_SETS.mobile : FRAME_SETS.desktop;
   const frames = new Array(FRAME_COUNT);
-  const ready = new Uint8Array(FRAME_COUNT);
+  const ready = new Uint8Array(FRAME_COUNT); // image loaded (bytes fetched)
+  const decoded = new Uint8Array(FRAME_COUNT); // image bitmap actually decoded, safe to paint without blocking
 
   const frameUrl = (i) => frameDir + 'f_' + String(i + 1).padStart(4, '0') + '.webp';
 
@@ -166,12 +167,30 @@
     });
   }
 
+  // Only frames already decoded are safe to paint without blocking the main thread.
+  function nearestDecoded(i) {
+    for (let d = 0; d < FRAME_COUNT; d++) {
+      if (i - d >= 0 && decoded[i - d]) return i - d;
+      if (i + d < FRAME_COUNT && decoded[i + d]) return i + d;
+    }
+    return -1;
+  }
+
   function nearestReady(i) {
     for (let d = 0; d < FRAME_COUNT; d++) {
       if (i - d >= 0 && ready[i - d]) return i - d;
       if (i + d < FRAME_COUNT && ready[i + d]) return i + d;
     }
     return -1;
+  }
+
+  function decodeFrame(j) {
+    if (decoded[j] || !ready[j]) return;
+    decoded[j] = 2; // in flight, prevents re-requesting the same decode
+    frames[j]
+      .decode()
+      .catch(() => {})
+      .then(() => { decoded[j] = 1; });
   }
 
   // Decode a few frames ahead of the scroll direction so drawImage never decodes synchronously.
@@ -183,7 +202,7 @@
     lastPrefetch = i;
     for (let k = 1; k <= DECODE_AHEAD; k++) {
       const j = i + k * dir;
-      if (j >= 0 && j < FRAME_COUNT && ready[j]) frames[j].decode().catch(() => {});
+      if (j >= 0 && j < FRAME_COUNT) decodeFrame(j);
     }
   }
 
@@ -204,16 +223,33 @@
     drawn = '';
   }
 
+  // Picks the best drawable neighbour for a target frame index: decoded preferred, loaded as fallback.
+  function pickDrawable(target) {
+    decodeFrame(target);
+    let i = nearestDecoded(target);
+    if (i < 0) i = nearestReady(target);
+    return i;
+  }
+
   function draw(frame, focus, shift) {
-    const i = nearestReady(Math.round(frame));
-    if (i < 0) return;
+    const lo = Math.floor(frame);
+    const hi = Math.min(FRAME_COUNT - 1, lo + 1);
+    const frac = frame - lo;
+
+    const a = pickDrawable(lo);
+    if (a < 0) return;
+    // Cross-fade toward the next frame by the leftover fraction, instead of snapping on
+    // whole-frame boundaries — the source is low-fps, so this smooths the visible steps.
+    const b = frac > 0.004 ? pickDrawable(hi) : -1;
+
     const fx = Math.round(focus * 1000) / 1000;
     const sx = wideQuery.matches ? Math.round(shift * cw) : 0;
-    const key = i + '|' + fx + '|' + sx + '|' + cw + 'x' + ch;
+    const bAlpha = b >= 0 && b !== a ? Math.round(frac * 100) / 100 : 0;
+    const key = a + '|' + b + '|' + bAlpha + '|' + fx + '|' + sx + '|' + cw + 'x' + ch;
     if (key === drawn) return;
     drawn = key;
 
-    const img = frames[i];
+    const img = frames[a];
     const scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
     const w = img.naturalWidth * scale;
     const h = img.naturalHeight * scale;
@@ -227,6 +263,11 @@
       ctx.fillRect(0, 0, cw, ch);
     }
     ctx.drawImage(img, x, y, w, h);
+    if (bAlpha > 0) {
+      ctx.globalAlpha = bAlpha;
+      ctx.drawImage(frames[b], x, y, w, h);
+      ctx.globalAlpha = 1;
+    }
 
     // Drifted frame: melt the exposed edge into the background. The fade grows with the gap,
     // so the drift starts without a visible jump.
@@ -238,7 +279,7 @@
       ctx.fillStyle = fade;
       ctx.fillRect(edge - fw, 0, fw + 1, ch);
     }
-    prefetch(i);
+    prefetch(lo);
   }
 
   /* ---------- UI state ---------- */
