@@ -175,12 +175,14 @@
   .lead { margin: var(--s-5) 0 0; max-width: 34ch; font-size: var(--fs-lead); line-height: 1.5; color: var(--c-muted); }
   .offer {
     list-style: none; margin: var(--s-5) auto 0; padding: 0; max-width: 680px;
-    display: flex; flex-wrap: wrap; justify-content: center; row-gap: 8px;
+    display: flex; flex-wrap: wrap; justify-content: center; row-gap: 8px; column-gap: 33px;
     font-size: clamp(.85rem, 1.05vw, 1rem); line-height: 1.4; letter-spacing: .01em; color: var(--c-soft);
   }
-  .offer li { display: inline-flex; align-items: center; white-space: nowrap; }
+  .offer li { position: relative; display: inline-flex; align-items: center; white-space: nowrap; }
+  /* Точка стоит в зазоре между пунктами и не занимает места: иначе, убрав её в начале строки,
+     пункт становится уже, перескакивает на строку выше, и точки встают не туда. */
   .offer li + li::before {
-    content: ""; flex: none; width: 5px; height: 5px; margin: 0 14px; border-radius: 50%;
+    content: ""; position: absolute; left: -19px; top: 50%; width: 5px; height: 5px; margin-top: -2.5px; border-radius: 50%;
     background: #f0c48a; box-shadow: 0 0 8px rgba(240, 196, 138, .75);
   }
   .offer li.row-start::before { display: none; }
