@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="ru" data-lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>areon — AI | Engineer</title>
+<meta name="description" content="Лендинги и сайты от идеи до запуска · Websites from idea to launch">
+<link rel="preload" href="fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#2a1d10">
+<link rel="canonical" href="https://areonbtw.github.io/portfolio/works/arcade/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://areonbtw.github.io/portfolio/works/arcade/">
+<meta property="og:title" content="areon — сайты от идеи до запуска">
+<meta property="og:description" content="Анимированные сайты, лендинги, многостраничные сайты и AI-агенты.">
+<!-- Только полный адрес: Telegram не показывает превью по относительному пути. -->
+<meta property="og:image" content="https://areonbtw.github.io/portfolio/works/arcade/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  @font-face { font-family: "Unbounded"; font-weight: 200 900; font-display: swap; src: url("fonts/unbounded-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: "Unbounded"; font-weight: 200 900; font-display: swap; src: url("fonts/unbounded-cyrillic.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+  @font-face { font-family: "Manrope"; font-weight: 200 800; font-display: swap; src: url("fonts/manrope-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: "Manrope"; font-weight: 200 800; font-display: swap; src: url("fonts/manrope-cyrillic.woff2") format("woff2"); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+
+  :root {
+    --f-display: "Unbounded", "Arial Black", system-ui, sans-serif;
+    --f-text: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    --gutter: clamp(16px, 4vw, 48px);
+    --top-h: 64px;
+    --s-2: 8px; --s-3: 12px; --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-9: 96px;
+
+    --fs-xl: clamp(1.5rem, calc((100vw - 2 * var(--gutter)) / 12), 6rem);
+    --fs-l: clamp(1.7rem, 5.2vw, 3.4rem);
+    --fs-final: clamp(1.4rem, calc((100vw - 2 * var(--gutter)) / 15), 5rem);
+    --fs-lead: clamp(1rem, 1.4vw, 1.2rem);
+    --fs-small: .75rem;
+
+    --c-text: #fff;
+    --c-soft: rgba(255, 255, 255, .88);
+    --c-muted: rgba(255, 255, 255, .72);
+    --c-faint: rgba(255, 255, 255, .52);
+    --c-line: rgba(255, 255, 255, .2);
+    --shade: 20 13 6;
+
+    --ink: #1f1a14;
+    --ink-muted: rgba(31, 26, 20, .66);
+    --ink-faint: rgba(31, 26, 20, .45);
+    --ink-line: rgba(31, 26, 20, .16);
+    --paper: #efe6d6;
+
+    --ease-out: cubic-bezier(.16, 1, .3, 1);
+    --t-in: 1.1s; --t-out: .45s; --stagger: 90ms;
+    --blur-from: 14px; --rise-from: 28px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :root { --blur-from: 0px; --rise-from: 0px; --stagger: 0ms; }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; overscroll-behavior-y: none; }
+  body {
+    background: var(--paper);
+    color: var(--c-text);
+    font-family: var(--f-text);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  body.is-loading { overflow: hidden; }
+  a { color: inherit; }
+
+  [data-lang="ru"] .en, [data-lang="en"] .ru { display: none !important; }
+
+  /* --- прелоадер --- */
+  #loader {
+    position: fixed; inset: 0; z-index: 100;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+    background: var(--paper); color: var(--ink);
+    transition: opacity .8s ease, visibility .8s ease;
+  }
+  #loader.done { opacity: 0; visibility: hidden; }
+  .loader-name { font-family: var(--f-display); font-weight: 500; font-size: .8rem; letter-spacing: .4em; padding-left: .4em; }
+  .loader-bar { width: min(220px, 56vw); height: 1px; background: var(--ink-line); overflow: hidden; }
+  .loader-bar i { display: block; height: 100%; background: var(--ink); transform-origin: left; transform: scaleX(0); }
+  .loader-pct { font-family: var(--f-display); font-size: .65rem; letter-spacing: .2em; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+
+  /* --- шапка --- */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    height: var(--top-h); margin: 0 var(--gutter);
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--c-line);
+    font-family: var(--f-display); font-weight: 500; font-size: .7rem; letter-spacing: .14em;
+    color: var(--c-text);
+    transition: color .5s ease, border-color .5s ease;
+  }
+  .topbar__brand { text-decoration: none; }
+  #lang {
+    font: 500 .65rem/1 var(--f-display); letter-spacing: .14em;
+    color: inherit; background: rgba(255, 255, 255, .08);
+    border: 1px solid var(--c-line); border-radius: 999px;
+    padding: 9px 14px; cursor: pointer;
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    transition: background .3s ease, border-color .5s ease;
+  }
+  #lang:hover { background: rgba(255, 255, 255, .2); }
+  body.on-light .topbar { color: var(--ink); border-color: var(--ink-line); }
+  body.on-light #lang { border-color: var(--ink-line); background: rgba(31, 26, 20, .04); }
+  :focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+  /* --- скролл-сцена --- */
+  #stage { position: relative; height: 600vh; }
+  #viewport { position: relative; height: 100vh; overflow: hidden; background: #2a1d10; }
+  #scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  #viewport::after {
+    content: ""; position: absolute; left: 0; right: 0; top: 0; height: 160px; z-index: 2; pointer-events: none;
+    background: linear-gradient(to bottom, rgb(var(--shade) / .42), transparent);
+  }
+
+  .panel {
+    position: absolute; inset: 0; z-index: 1;
+    display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end;
+    padding: calc(var(--top-h) + var(--s-5)) var(--gutter) max(var(--s-7), calc(env(safe-area-inset-bottom) + var(--s-6)));
+    pointer-events: none;
+  }
+  .panel::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    opacity: 0; transition: opacity 1.2s ease;
+  }
+  .panel.is-active::before { opacity: 1; }
+  .panel__inner { width: 100%; max-width: 560px; }
+
+  .panel--hero { align-items: center; justify-content: center; text-align: center; }
+  .panel--hero::before {
+    background: radial-gradient(ellipse 85% 60% at 50% 50%, rgb(var(--shade) / .66), rgb(var(--shade) / .32) 55%, transparent 85%);
+  }
+  .panel--hero .panel__inner { max-width: none; }
+
+  .panel--right::before, .panel--left::before, .panel--bottom::before {
+    background: linear-gradient(to top, rgb(var(--shade) / .9) 0%, rgb(var(--shade) / .6) 45%, transparent 78%);
+  }
+  .panel--bottom .panel__inner { max-width: 900px; }
+
+  @media (min-width: 768px) and (min-aspect-ratio: 5/4) {
+    .panel--right { align-items: flex-end; justify-content: center; padding-right: calc(var(--gutter) + var(--s-7)); }
+    .panel--right::before { background: linear-gradient(to left, rgb(var(--shade) / .82) 0%, rgb(var(--shade) / .5) 38%, transparent 62%); }
+    .panel--left { justify-content: center; padding-left: calc(var(--gutter) + var(--s-7)); }
+    .panel--left::before { background: linear-gradient(to right, rgb(var(--shade) / .82) 0%, rgb(var(--shade) / .5) 38%, transparent 62%); }
+    .panel--right .panel__inner, .panel--left .panel__inner { width: min(46vw, 560px); }
+    .panel--bottom { padding-bottom: var(--s-7); }
+    .panel--bottom::before { background: linear-gradient(to top, rgb(var(--shade) / .88) 0%, rgb(var(--shade) / .5) 40%, transparent 68%); }
+    .panel--bottom .panel__inner { max-width: 1100px; }
+  }
+
+  /* --- типографика --- */
+  .eyebrow {
+    margin: 0 0 var(--s-5);
+    font-family: var(--f-display); font-weight: 500; font-size: var(--fs-small);
+    letter-spacing: .3em; color: var(--c-faint);
+  }
+  .title {
+    margin: 0;
+    font-family: var(--f-display); font-weight: 600; text-transform: uppercase;
+    line-height: 1.02; letter-spacing: -.01em;
+  }
+  .title--xl { font-size: var(--fs-xl); }
+  .title--l { font-size: var(--fs-l); }
+  .title .line { display: block; }
+  .lead { margin: var(--s-5) 0 0; max-width: 34ch; font-size: var(--fs-lead); line-height: 1.5; color: var(--c-muted); }
+  .offer {
+    list-style: none; margin: var(--s-5) auto 0; padding: 0; max-width: 680px;
+    display: flex; flex-wrap: wrap; justify-content: center; row-gap: 8px;
+    font-size: clamp(.85rem, 1.05vw, 1rem); line-height: 1.4; letter-spacing: .01em; color: var(--c-soft);
+  }
+  .offer li { display: inline-flex; align-items: center; white-space: nowrap; }
+  .offer li + li::before {
+    content: ""; flex: none; width: 5px; height: 5px; margin: 0 14px; border-radius: 50%;
+    background: #f0c48a; box-shadow: 0 0 8px rgba(240, 196, 138, .75);
+  }
+  .offer li.row-start::before { display: none; }
+
+  .steps { list-style: none; margin: var(--s-6) 0 0; padding: 0; }
+  .steps__item {
+    display: grid; grid-template-columns: 3.2em 1fr; align-items: baseline;
+    padding: 14px 0; border-top: 1px solid var(--c-line);
+    font-size: var(--fs-lead); line-height: 1.4; color: var(--c-muted);
+  }
+  .steps__num { font-family: var(--f-display); font-size: .75rem; line-height: 2.2; letter-spacing: .08em; color: var(--c-faint); }
+  .steps__body { display: flex; flex-direction: column; gap: 4px; }
+  .steps__item strong { color: var(--c-text); font-weight: 600; }
+  .steps__desc { font-size: clamp(.9rem, 1.05vw, 1rem); line-height: 1.5; color: var(--c-muted); }
+
+  /* --- кнопка --- */
+  .btn {
+    display: inline-flex; align-items: center; gap: var(--s-3);
+    min-height: 52px; padding: 0 8px 0 var(--s-5);
+    border: 1px solid var(--c-line); border-radius: 999px;
+    background: rgba(255, 255, 255, .1); color: var(--c-text);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    font-family: var(--f-text); font-size: .95rem; font-weight: 600; text-decoration: none;
+    transition: background .4s ease, color .4s ease, border-color .4s ease;
+  }
+  .btn__label { display: inline-block; pointer-events: none; }
+  .btn__arrow {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--c-text); color: var(--ink); font-size: 1rem;
+    transition: transform .5s var(--ease-out), background .4s ease, color .4s ease;
+  }
+  .btn:hover { background: #fff; color: var(--ink); border-color: #fff; }
+  .btn:hover .btn__arrow { background: var(--ink); color: #fff; transform: translateX(3px); }
+  .panel--hero .btn-wrap { margin-top: var(--s-6); }
+  .panel.is-active .btn { pointer-events: auto; }
+
+  .hint {
+    position: absolute; left: 50%; bottom: max(var(--s-6), calc(env(safe-area-inset-bottom) + var(--s-5)));
+    translate: -50% 0; margin: 0;
+    display: flex; flex-direction: column; align-items: center; gap: var(--s-3);
+    font-size: var(--fs-small); letter-spacing: .16em; text-transform: uppercase; color: var(--c-soft);
+    text-shadow: 0 1px 10px rgb(var(--shade) / .7);
+  }
+  .hint__line { position: relative; width: 1px; height: 40px; overflow: hidden; background: var(--c-line); }
+  .hint__line::after {
+    content: ""; position: absolute; left: 0; top: 0; width: 1px; height: 40%;
+    background: var(--c-text); animation: hint-drop 2.2s var(--ease-out) infinite;
+  }
+  @keyframes hint-drop { from { transform: translateY(-100%); } to { transform: translateY(250%); } }
+
+  /* --- появление строк (как в cosmos) --- */
+  .line {
+    opacity: 0; filter: blur(var(--blur-from)); transform: translate3d(0, var(--rise-from), 0);
+    transition: opacity var(--t-out) ease, filter var(--t-out) ease, transform var(--t-out) ease;
+  }
+  .is-active .line {
+    opacity: 1; filter: none; transform: none;
+    transition:
+      opacity var(--t-in) var(--ease-out) calc(var(--i, 0) * var(--stagger) + 120ms),
+      filter var(--t-in) var(--ease-out) calc(var(--i, 0) * var(--stagger) + 120ms),
+      transform var(--t-in) var(--ease-out) calc(var(--i, 0) * var(--stagger) + 120ms);
+  }
+
+  /* --- финал --- */
+  #final {
+    position: relative; z-index: 2;
+    min-height: 100vh; min-height: 100svh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: calc(var(--top-h) + var(--s-6)) var(--gutter) calc(var(--s-7) + var(--s-6));
+    background: var(--paper); color: var(--ink);
+  }
+  #final .panel__inner { max-width: 1100px; }
+  .title--final { font-size: var(--fs-final); }
+  #final .lead { color: var(--ink-muted); }
+  #final .btn-wrap { margin-top: var(--s-6); }
+  #final .btn { background: var(--ink); color: var(--paper); border-color: var(--ink); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  #final .btn__arrow { background: var(--paper); color: var(--ink); }
+  #final .btn:hover { background: #fff; color: var(--ink); border-color: var(--ink); }
+  #final .btn:hover .btn__arrow { background: var(--ink); color: var(--paper); }
+  .handle { display: inline-block; margin-top: var(--s-5); font-size: .9rem; letter-spacing: .04em; color: var(--ink-muted); text-decoration: none; }
+  .handle:hover { color: var(--ink); }
+  .price { margin: var(--s-2) 0 0; font-size: .85rem; letter-spacing: .04em; color: var(--ink-faint); }
+
+  #sand { position: fixed; inset: 0; z-index: 90; width: 100%; height: 100%; pointer-events: none; }
+  .foot {
+    position: absolute; left: var(--gutter); right: var(--gutter); bottom: max(var(--s-5), env(safe-area-inset-bottom));
+    padding-top: var(--s-3); border-top: 1px solid var(--ink-line);
+    font-size: var(--fs-small); letter-spacing: .04em; color: var(--ink-faint);
+  }
+
+  @media (max-width: 600px) {
+    .btn { min-height: 56px; }
+  }
+
+  /* --- бумага поверх всего, включая текст (рецепт «светлый сайт» из инструкции) --- */
+  .paper, .paperlite {
+    position: fixed; inset: 0; pointer-events: none;
+    background: url("textures/paper.jpg") 0 0 / 1100px auto repeat;
+  }
+  .paper { z-index: 95; mix-blend-mode: multiply; opacity: .72; filter: sepia(.35) contrast(1.15) brightness(1.1); }
+  .paperlite { z-index: 96; mix-blend-mode: screen; opacity: .18; filter: contrast(1.4); }
+</style>
+<noscript><style>
+  #loader { display: none; } body.is-loading { overflow: auto; }
+  .panel:not(.panel--hero) { display: none; }
+  .panel .btn { pointer-events: auto; }
+  .line { opacity: 1 !important; filter: none !important; transform: none !important; }
+</style></noscript>
+</head>
+<body class="is-loading">
+<canvas id="sand" aria-hidden="true"></canvas>
+<div class="paper" aria-hidden="true"></div>
+<div class="paperlite" aria-hidden="true"></div>
+
+<div id="loader">
+  <div class="loader-name">AREON</div>
+  <div class="loader-bar" id="loaderTrack" role="progressbar" aria-label="Loading" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="loaderBar"></i></div>
+  <div class="loader-pct" id="loaderPct">0%</div>
+</div>
+
+<header class="topbar">
+  <a class="topbar__brand" href="#top">AREON — AI</a>
+  <button id="lang" type="button" aria-label="Switch language / Сменить язык"><span class="ru">EN</span><span class="en">RU</span></button>
+</header>
+
+<main id="top">
+  <section id="stage">
+    <div id="viewport">
+      <canvas id="scene" aria-hidden="true"></canvas>
+
+      <section class="panel panel--hero" data-panel="0">
+        <div class="panel__inner ru">
+          <p class="eyebrow line">AREON · AI | ENGINEER</p>
+          <h1 class="title title--xl">
+            <span class="line">Сайты</span>
+            <span class="line">от идеи</span>
+            <span class="line">до запуска</span>
+          </h1>
+          <ul class="offer line">
+            <li>Лендинги</li><li>Автоматизация для бизнеса</li><li>Адаптив под телефон</li><li>Многостраничные сайты</li><li>Карточки-визитки</li><li>Таблицы и&nbsp;схемы для задач</li>
+          </ul>
+          <div class="btn-wrap line"><a class="btn" href="https://t.me/areon_uc" target="_blank" rel="noopener"><span class="btn__label">Написать в Telegram</span><span class="btn__arrow" aria-hidden="true">→</span></a></div>
+        </div>
+        <div class="panel__inner en">
+          <p class="eyebrow line">AREON · AI | ENGINEER</p>
+          <h1 class="title title--xl">
+            <span class="line">Websites</span>
+            <span class="line">from idea</span>
+            <span class="line">to launch</span>
+          </h1>
+          <ul class="offer line">
+            <li>Landing pages</li><li>Business automation</li><li>Mobile-friendly design</li><li>Multi-page websites</li><li>Digital business cards</li><li>Spreadsheets and diagrams for tasks</li>
+          </ul>
+          <div class="btn-wrap line"><a class="btn" href="https://t.me/areon_uc" target="_blank" rel="noopener"><span class="btn__label">Message on Telegram</span><span class="btn__arrow" aria-hidden="true">→</span></a></div>
+        </div>
+        <p class="hint ru line" aria-hidden="true"><span class="hint__line"></span>Листайте вниз</p>
+        <p class="hint en line" aria-hidden="true"><span class="hint__line"></span>Scroll down</p>
+      </section>
+
+      <section class="panel panel--right" data-panel="1">
+        <div class="panel__inner ru">
+          <h2 class="title title--l line">Что я делаю</h2>
+          <ol class="steps">
+            <li class="steps__item line"><span class="steps__num">01</span><span class="steps__body"><strong>Анимированные сайты</strong><span class="steps__desc">Как этот: картинка движется вместе со&nbsp;скроллом, а&nbsp;видео для неё я&nbsp;генерирую в&nbsp;нейросетях.</span></span></li>
+            <li class="steps__item line"><span class="steps__num">02</span><span class="steps__body"><strong>Лендинги</strong><span class="steps__desc">Одна страница про ваш продукт или услугу, без тяжёлой анимации. Подходит, когда нужно просто и&nbsp;понятно рассказать о&nbsp;предложении.</span></span></li>
+            <li class="steps__item line"><span class="steps__num">03</span><span class="steps__body"><strong>Многостраничные сайты и&nbsp;визитки</strong><span class="steps__desc">Сайт компании с&nbsp;разделами услуг и&nbsp;контактов или личная визитка с&nbsp;портфолио для специалиста.</span></span></li>
+            <li class="steps__item line"><span class="steps__num">04</span><span class="steps__body"><strong>AI-агенты</strong><span class="steps__desc">Соберу агента, который пишет контент, собирает данные или разбирается в&nbsp;документах.</span></span></li>
+          </ol>
+        </div>
+        <div class="panel__inner en">
+          <h2 class="title title--l line">What I do</h2>
+          <ol class="steps">
+            <li class="steps__item line"><span class="steps__num">01</span><span class="steps__body"><strong>Animated websites</strong><span class="steps__desc">Like this one: the picture moves as&nbsp;you scroll, and I&nbsp;generate the video with neural networks.</span></span></li>
+            <li class="steps__item line"><span class="steps__num">02</span><span class="steps__body"><strong>Landing pages</strong><span class="steps__desc">One page about your product or&nbsp;service, without heavy animation. A&nbsp;good fit when you need to&nbsp;explain your offer clearly.</span></span></li>
+            <li class="steps__item line"><span class="steps__num">03</span><span class="steps__body"><strong>Multi-page and portfolio sites</strong><span class="steps__desc">A&nbsp;company site with service and contact sections, or&nbsp;a&nbsp;personal site with a&nbsp;portfolio.</span></span></li>
+            <li class="steps__item line"><span class="steps__num">04</span><span class="steps__body"><strong>AI agents</strong><span class="steps__desc">I'll build an&nbsp;agent that writes content, collects data or&nbsp;works through documents.</span></span></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="panel panel--left" data-panel="2">
+        <div class="panel__inner ru">
+          <h2 class="title title--l line">Как я работаю</h2>
+          <ol class="steps">
+            <li class="steps__item line"><span class="steps__num">01</span><span class="steps__body"><strong>Разбираем задачу</strong><span class="steps__desc">Созваниваемся, вы&nbsp;рассказываете о&nbsp;бизнесе и&nbsp;о&nbsp;том, каким видите сайт. Я&nbsp;предлагаю структуру и&nbsp;стиль.</span></span></li>
+            <li class="steps__item line"><span class="steps__num">02</span><span class="steps__body"><strong>Показываю демо</strong><span class="steps__desc">Собираю первую версию сайта, и&nbsp;вы&nbsp;смотрите на&nbsp;неё ещё до&nbsp;запуска.</span></span></li>
+            <li class="steps__item line"><span class="steps__num">03</span><span class="steps__body"><strong>Запускаю и&nbsp;поддерживаю</strong><span class="steps__desc">Выкладываю сайт в&nbsp;интернет, подключаю домен и&nbsp;остаюсь на&nbsp;связи после запуска.</span></span></li>
+          </ol>
+        </div>
+        <div class="panel__inner en">
+          <h2 class="title title--l line">How I work</h2>
+          <ol class="steps">
+            <li class="steps__item line"><span class="steps__num">01</span><span class="steps__body"><strong>We go through the task</strong><span class="steps__desc">On&nbsp;a&nbsp;call, you tell me about your business and how you see the site. I&nbsp;suggest a&nbsp;structure and a&nbsp;style.</span></span></li>
+            <li class="steps__item line"><span class="steps__num">02</span><span class="steps__body"><strong>I show a demo</strong><span class="steps__desc">I&nbsp;build a&nbsp;first version, so&nbsp;you can see the site before launch.</span></span></li>
+            <li class="steps__item line"><span class="steps__num">03</span><span class="steps__body"><strong>I launch and support it</strong><span class="steps__desc">I&nbsp;put the site online, connect the domain and stay in&nbsp;touch after launch.</span></span></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="panel panel--bottom" data-panel="3">
+        <div class="panel__inner ru">
+          <h2 class="title title--xl">
+            <span class="line">Пусть рутину</span>
+            <span class="line">делает</span>
+            <span class="line">нейросеть</span>
+          </h2>
+          <p class="lead line">Сайты и&nbsp;AI-агенты под ваши задачи. Для бизнеса и&nbsp;личных дел.</p>
+        </div>
+        <div class="panel__inner en">
+          <h2 class="title title--xl">
+            <span class="line">Let&nbsp;AI</span>
+            <span class="line">handle</span>
+            <span class="line">the routine</span>
+          </h2>
+          <p class="lead line">Websites and AI&nbsp;agents for your tasks. For business and personal use.</p>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section id="final">
+    <div class="panel__inner ru">
+      <h2 class="title title--final line">Расскажите о&nbsp;своём проекте</h2>
+      <p class="lead line">Напишите в&nbsp;Telegram. Обсудим, какой сайт вам нужен, и&nbsp;я&nbsp;покажу, как он&nbsp;может выглядеть.</p>
+      <div class="btn-wrap line"><a class="btn" href="https://t.me/areon_uc" target="_blank" rel="noopener"><span class="btn__label">Написать в Telegram</span><span class="btn__arrow" aria-hidden="true">→</span></a></div>
+      <a class="handle line" href="https://t.me/areon_uc" target="_blank" rel="noopener">@areon_uc</a>
+      <p class="price line">Стоимость по&nbsp;договорённости.</p>
+    </div>
+    <div class="panel__inner en">
+      <h2 class="title title--final line">Tell me about your project</h2>
+      <p class="lead line">Message me on&nbsp;Telegram. We'll talk about the site you need, and I'll show you how it&nbsp;could look.</p>
+      <div class="btn-wrap line"><a class="btn" href="https://t.me/areon_uc" target="_blank" rel="noopener"><span class="btn__label">Message on Telegram</span><span class="btn__arrow" aria-hidden="true">→</span></a></div>
+      <a class="handle line" href="https://t.me/areon_uc" target="_blank" rel="noopener">@areon_uc</a>
+      <p class="price line">Pricing by&nbsp;agreement.</p>
+    </div>
+    <div class="foot">© 2026 areon</div>
+  </section>
+</main>
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var FRAME_COUNT = 254;
+  var STOPS = [0, 72, 120, 253];
+  // Вертикальный экран видит только центр кадра: грузим набор, обрезанный по ширине (720×902, соотношение 0,8).
+  var FRAME_SET = window.innerWidth / window.innerHeight < 0.8 ? "mobile" : "desktop";
+  var finePointer = window.matchMedia("(pointer: fine)").matches;
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  window.scrollTo(0, 0);
+
+  // --- язык ---
+  var root = document.documentElement;
+  var started = false;
+
+  // Точка-разделитель не должна стоять в начале перенесённой строки.
+  function markOfferRows() {
+    document.querySelectorAll(".offer").forEach(function (ul) {
+      if (!ul.offsetParent) return;
+      var items = ul.querySelectorAll("li");
+      for (var pass = 0; pass < 3; pass++) {
+        var changed = false, prevTop = null;
+        items.forEach(function (li) {
+          var start = prevTop !== null && li.offsetTop > prevTop + 2;
+          if (li.classList.contains("row-start") !== start) { li.classList.toggle("row-start", start); changed = true; }
+          prevTop = li.offsetTop;
+        });
+        if (!changed) break;
+      }
+    });
+  }
+
+  function savedLang() { try { return localStorage.getItem("lang"); } catch (e) { return null; } }
+  function setLang(lang) {
+    root.dataset.lang = lang;
+    root.lang = lang;
+    try { localStorage.setItem("lang", lang); } catch (e) {}
+    markOfferRows();
+    if (started) ScrollTrigger.refresh();
+  }
+  var browserLang = ((navigator.languages && navigator.languages[0]) || navigator.language || "en").toLowerCase();
+  setLang(savedLang() || (browserLang.indexOf("ru") === 0 ? "ru" : "en"));
+  document.getElementById("lang").addEventListener("click", function () {
+    setLang(root.dataset.lang === "ru" ? "en" : "ru");
+  });
+
+  // --- порядок появления строк: свой счёт в каждом языковом блоке ---
+  document.querySelectorAll(".panel, #final").forEach(function (scope) {
+    var counters = { ru: 0, en: 0, both: 0 };
+    scope.querySelectorAll(".line").forEach(function (el) {
+      var key = el.closest(".ru") ? "ru" : el.closest(".en") ? "en" : "both";
+      el.style.setProperty("--i", counters[key]++);
+    });
+  });
+
+  // --- экраны ---
+  var panels = Array.prototype.slice.call(document.querySelectorAll(".panel"));
+  var current = -2;
+  panels.forEach(function (el) { el.inert = true; });
+  function setPanel(i) {
+    if (i === current) return;
+    current = i;
+    panels.forEach(function (el, k) {
+      el.classList.toggle("is-active", k === i);
+      el.inert = k !== i;
+    });
+  }
+  // Раскладка скролла в долях от 0 до 1. Короче полёт — быстрее пролетает; общую длину задаёт высота #stage в CSS.
+  var T = {
+    heroEnd: .04,
+    fly1: [.04, .20], stop1: [.20, .40],
+    fly2: [.40, .50], stop2: [.50, .70],
+    fly3: [.70, .86], stop3: [.86, 1]
+  };
+  function panelAt(p) {
+    if (p < T.heroEnd - .005) return 0;
+    if (p >= T.stop1[0] + .005 && p < T.stop1[1] - .005) return 1;
+    if (p >= T.stop2[0] + .005 && p < T.stop2[1] - .005) return 2;
+    if (p >= T.stop3[0] + .005) return 3;
+    return -1;
+  }
+
+  // --- canvas + кадры ---
+  var canvas = document.getElementById("scene");
+  var ctx = canvas.getContext("2d");
+  var frames = new Array(FRAME_COUNT);
+  var seq = { frame: 0 };
+
+  function framePath(i) { return "frames/" + FRAME_SET + "/f_" + String(i + 1).padStart(4, "0") + ".webp"; }
+
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var r = canvas.getBoundingClientRect();
+    canvas.width = Math.round(r.width * dpr);
+    canvas.height = Math.round(r.height * dpr);
+    render();
+  }
+
+  function drawCover(img) {
+    var cw = canvas.width, ch = canvas.height;
+    var iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
+    var scale = Math.max(cw / iw, ch / ih);
+    var w = iw * scale, h = ih * scale;
+    ctx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
+  }
+
+  // Распаковка заранее: без неё браузер распаковывает WebP в момент первого показа и полёт идёт рывками.
+  // Держим готовыми кадры вокруг текущего (больше — по ходу движения), дальние выкидываем, чтобы не съесть память телефона.
+  var BM_AHEAD = 30, BM_BEHIND = 8, BM_PARALLEL = 6;
+  var bmOn = typeof createImageBitmap === "function" && !!window.fetch && !reduceMotion;
+  var blobs = new Array(FRAME_COUNT), bitmaps = new Array(FRAME_COUNT), bmBusy = {}, bmFailed = {}, bmActive = 0;
+  var dir = 1, lastFrame = 0;
+
+  function bmAble(i) { return bmOn && !!blobs[i] && !bmFailed[i]; }
+  function bmCenter() { return Math.round(Math.min(Math.max(seq.frame, 0), FRAME_COUNT - 1)); }
+  function bmWanted(i, c) {
+    var d = (i - c) * dir;
+    return d >= -BM_BEHIND && d <= BM_AHEAD;
+  }
+  function prepare() {
+    if (!bmOn) return;
+    var c = bmCenter();
+    for (var i = 0; i < FRAME_COUNT; i++) {
+      if (bitmaps[i] && !bmWanted(i, c)) { bitmaps[i].close(); bitmaps[i] = null; }
+    }
+    for (var d = 0; d <= BM_AHEAD + BM_BEHIND && bmActive < BM_PARALLEL; d++) {
+      var j = d <= BM_AHEAD ? c + d * dir : c - (d - BM_AHEAD) * dir;
+      if (j >= 0 && j < FRAME_COUNT && bmAble(j) && !bitmaps[j] && !bmBusy[j]) makeBitmap(j);
+    }
+  }
+  function makeBitmap(j) {
+    bmBusy[j] = true;
+    bmActive++;
+    // Из файла (blob), а не из <img>: так браузер распаковывает в фоновом потоке, не тормозя скролл.
+    createImageBitmap(blobs[j]).then(function (bm) {
+      if (bmWanted(j, bmCenter())) {
+        bitmaps[j] = bm;
+        if (started && Math.abs(j - seq.frame) < 2) render();
+      } else bm.close();
+    }, function () { bmFailed[j] = true; }).then(function () {
+      bmBusy[j] = false;
+      bmActive--;
+      prepare();
+    });
+  }
+
+  function nearestLoaded(i) {
+    for (var d = 0; d < FRAME_COUNT; d++) {
+      if (frames[i - d]) return frames[i - d];
+      if (frames[i + d]) return frames[i + d];
+    }
+    return null;
+  }
+
+  // Кадров вдвое меньше исходных 24 fps, поэтому между соседними кадрами плавно смешиваем картинку.
+  function render() {
+    if (reduceMotion) { renderStill(); return; }
+    var f = Math.min(Math.max(seq.frame, 0), FRAME_COUNT - 1);
+    if (f !== lastFrame) { dir = f > lastFrame ? 1 : -1; lastFrame = f; }
+    prepare();
+    var i0 = Math.floor(f), t = f - i0;
+    var a = bitmaps[i0] || frames[i0], b = bitmaps[i0 + 1] || frames[i0 + 1];
+    if (bmAble(i0) && !bitmaps[i0]) {
+      // Нужный кадр ещё распаковывается: показываем ближайший готовый, чтобы не ждать распаковку посреди скролла.
+      for (var d = 1; d <= 3; d++) {
+        var ready = bitmaps[i0 - d * dir] || bitmaps[i0 + d * dir];
+        if (ready) { drawCover(ready); return; }
+      }
+    }
+    if (bmAble(i0 + 1) && !bitmaps[i0 + 1]) b = null;
+    if (!a) {
+      var near = nearestLoaded(i0);
+      if (near) drawCover(near);
+      return;
+    }
+    drawCover(a);
+    if (t > .02 && b) {
+      ctx.globalAlpha = t;
+      drawCover(b);
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  // Режим «уменьшить движение»: вместо полёта показываем только кадры остановок и плавно сменяем их по времени.
+  var still = { to: 0, t: 1 };
+  var snap = document.createElement("canvas"), snapCtx = snap.getContext("2d"), hasSnap = false;
+  function stillAt(p) {
+    if (p < (T.fly1[0] + T.fly1[1]) / 2) return 0;
+    if (p < (T.fly2[0] + T.fly2[1]) / 2) return 1;
+    if (p < (T.fly3[0] + T.fly3[1]) / 2) return 2;
+    return 3;
+  }
+  function setStill(k) {
+    if (k === still.to) return;
+    // Смена начинается со снимка того, что сейчас на экране, даже если прошлая смена не закончилась.
+    if (canvas.width && canvas.height) {
+      snap.width = canvas.width;
+      snap.height = canvas.height;
+      snapCtx.drawImage(canvas, 0, 0);
+      hasSnap = true;
+    }
+    still.to = k;
+    still.t = 0;
+    gsap.to(still, { t: 1, duration: .8, ease: "power1.inOut", overwrite: true, onUpdate: render });
+  }
+  function renderStill() {
+    var b = frames[STOPS[still.to]] || nearestLoaded(STOPS[still.to]);
+    if (!b) return;
+    if (hasSnap && still.t < 1) {
+      ctx.drawImage(snap, 0, 0, canvas.width, canvas.height);
+      ctx.globalAlpha = still.t;
+      drawCover(b);
+      ctx.globalAlpha = 1;
+    } else {
+      drawCover(b);
+    }
+  }
+
+  // --- загрузка: сначала начало и остановки, остальное догружается, пока человек смотрит первый экран ---
+  var order = [];
+  function queue(i) { if (i >= 0 && i < FRAME_COUNT && order.indexOf(i) < 0) order.push(i); }
+  var FIRST_BATCH, PRIORITY;
+  if (reduceMotion) {
+    STOPS.forEach(queue);
+    FIRST_BATCH = PRIORITY = order.length;
+  } else {
+    for (var i = 0; i < 12; i++) queue(i);
+    FIRST_BATCH = order.length;
+    STOPS.forEach(function (s) { for (var d = -2; d <= 2; d++) queue(s + d); });
+    PRIORITY = order.length;
+    for (var j = 0; j < FRAME_COUNT; j++) queue(j);
+  }
+
+  var bar = document.getElementById("loaderBar");
+  var track = document.getElementById("loaderTrack");
+  var pct = document.getElementById("loaderPct");
+  var firstLoaded = 0, nextInQueue = 0, active = 0, retried = {};
+
+  function onFirstProgress() {
+    firstLoaded++;
+    var p = firstLoaded / FIRST_BATCH;
+    var n = Math.round(p * 100);
+    bar.style.transform = "scaleX(" + p + ")";
+    pct.textContent = n + "%";
+    if (n % 10 === 0) track.setAttribute("aria-valuenow", n);
+    if (firstLoaded === FIRST_BATCH) warmUp();
+  }
+
+  function loadFrame(i, rank) {
+    active++;
+    var img = new Image();
+    img.onload = img.onerror = function () {
+      active--;
+      if (img.naturalWidth) {
+        frames[i] = img;
+        if (rank >= FIRST_BATCH && rank < PRIORITY && img.decode) img.decode().catch(function () {});
+        if (started && (Math.abs(i - seq.frame) < 2 || (reduceMotion && i === STOPS[still.to]))) render();
+        else if (started) prepare();
+      } else if (!retried[i]) {
+        retried[i] = true;
+        order.push(i);
+      }
+      if (rank < FIRST_BATCH) onFirstProgress();
+      pump();
+    };
+    if (!bmOn) { img.src = framePath(i); return; }
+    // Кадр качается один раз файлом: из него и обычная картинка, и распакованная заранее (prepare).
+    // При открытии двойным кликом fetch не работает — тогда грузим по-старому.
+    fetch(framePath(i)).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.blob();
+    }).then(function (blob) {
+      blobs[i] = blob;
+      img.src = URL.createObjectURL(blob);
+    }).catch(function () { img.src = framePath(i); });
+  }
+  function pump() {
+    while (active < 6 && nextInQueue < order.length) loadFrame(order[nextInQueue], nextInQueue++);
+  }
+  pump();
+  setTimeout(warmUp, 15000);
+
+  // Прогреваем только первую партию: декод всех кадров сразу съедает гигабайты, iOS Safari роняет вкладку.
+  var warmed = false;
+  function warmUp() {
+    if (warmed) return;
+    warmed = true;
+    var jobs = order.slice(0, FIRST_BATCH).map(function (i) { return frames[i]; }).filter(Boolean).map(function (img) {
+      return img.decode ? img.decode().catch(function () {}) : Promise.resolve();
+    });
+    var ready = Promise.all(jobs).then(function () {
+      return document.fonts ? document.fonts.ready : null;
+    });
+    var timeout = new Promise(function (resolve) { setTimeout(resolve, 4000); });
+    Promise.race([ready, timeout]).then(start);
+  }
+
+  // --- запуск ---
+  function start() {
+    if (started) return;
+    started = true;
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize: true });
+
+    resize();
+    markOfferRows();
+    if (document.fonts) document.fonts.ready.then(markOfferRows);
+    var resizeQueued = false;
+    window.addEventListener("resize", function () {
+      if (resizeQueued) return;
+      resizeQueued = true;
+      requestAnimationFrame(function () { resizeQueued = false; resize(); markOfferRows(); });
+    });
+
+    document.getElementById("loader").classList.add("done");
+    document.body.classList.remove("is-loading");
+    setTimeout(function () { if (current === -2) setPanel(0); }, 300);
+
+    var tl = gsap.timeline({
+      defaults: { ease: "none" },
+      onUpdate: function () {
+        var p = this.progress();
+        if (current !== -2) setPanel(panelAt(p));
+        if (reduceMotion) setStill(stillAt(p));
+      },
+      scrollTrigger: {
+        trigger: "#stage", start: "top top", end: "bottom bottom",
+        scrub: 0.6, pin: "#viewport", pinSpacing: false, anticipatePin: 1
+      }
+    });
+    tl.to(seq, { frame: STOPS[1], duration: T.fly1[1] - T.fly1[0], onUpdate: render }, T.fly1[0]);
+    tl.to(seq, { frame: STOPS[2], duration: T.fly2[1] - T.fly2[0], onUpdate: render }, T.fly2[0]);
+    tl.to(seq, { frame: STOPS[3], duration: T.fly3[1] - T.fly3[0], onUpdate: render }, T.fly3[0]);
+    tl.to({}, { duration: T.stop3[1] - T.fly3[1] }, T.fly3[1]);
+
+    var finalEl = document.getElementById("final");
+    ScrollTrigger.create({
+      trigger: finalEl, start: "top 70%",
+      onEnter: function () { finalEl.classList.add("is-active"); },
+      onLeaveBack: function () { finalEl.classList.remove("is-active"); }
+    });
+    ScrollTrigger.create({
+      trigger: finalEl, start: "top " + 64 + "px",
+      onToggle: function (self) { document.body.classList.toggle("on-light", self.isActive); }
+    });
+
+    if (finePointer && !reduceMotion) {
+      document.querySelectorAll(".btn").forEach(magnet);
+      sandTrail();
+    }
+
+    ScrollTrigger.refresh();
+  }
+
+  // --- магнит ---
+  function magnet(el) {
+    var label = el.querySelector(".btn__label");
+    var R = 110;
+    var moveX = gsap.quickTo(el, "x", { duration: .6, ease: "power3.out" });
+    var moveY = gsap.quickTo(el, "y", { duration: .6, ease: "power3.out" });
+    var labelX = gsap.quickTo(label, "x", { duration: .6, ease: "power3.out" });
+    var labelY = gsap.quickTo(label, "y", { duration: .6, ease: "power3.out" });
+    var moved = false;
+    window.addEventListener("mousemove", function (e) {
+      if (!el.offsetParent || !el.closest(".is-active")) {
+        if (moved) { moveX(0); moveY(0); labelX(0); labelY(0); moved = false; }
+        return;
+      }
+      moved = true;
+      var r = el.getBoundingClientRect();
+      var cx = r.left + r.width / 2 - gsap.getProperty(el, "x");
+      var cy = r.top + r.height / 2 - gsap.getProperty(el, "y");
+      var dx = e.clientX - cx, dy = e.clientY - cy;
+      var near = Math.abs(dx) < r.width / 2 + R && Math.abs(dy) < r.height / 2 + R;
+      moveX(near ? dx * .3 : 0);
+      moveY(near ? dy * .3 : 0);
+      labelX(near ? dx * .1 : 0);
+      labelY(near ? dy * .1 : 0);
+    });
+  }
+
+  // --- песок за курсором ---
+  function sandTrail() {
+    var c = document.getElementById("sand");
+    var g = c.getContext("2d");
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var COLORS = ["#fff3dc", "#f6deb0", "#eec68a", "#e0ad6e"];
+    var STEP = 5, MAX = 320;
+    var grains = [], running = false, last = 0, carry = 0, px = null, py = null;
+
+    function size() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      c.width = Math.round(innerWidth * dpr);
+      c.height = Math.round(innerHeight * dpr);
+    }
+    size();
+    window.addEventListener("resize", size);
+
+    function spawn(x, y) {
+      if (grains.length >= MAX) grains.shift();
+      grains.push({
+        x: x, y: y,
+        vx: (Math.random() - .5) * 50, vy: -Math.random() * 40,
+        r: 1.3 + Math.random() * 1.9,
+        life: 0, max: 1 + Math.random() * .6,
+        c: COLORS[(Math.random() * COLORS.length) | 0]
+      });
+    }
+
+    function tick(now) {
+      var dt = Math.min((now - last) / 1000, .05);
+      last = now;
+      g.clearRect(0, 0, c.width, c.height);
+      for (var i = grains.length - 1; i >= 0; i--) {
+        var p = grains[i];
+        p.life += dt;
+        if (p.life >= p.max) { grains.splice(i, 1); continue; }
+        p.vx = (p.vx + 25 * dt) * .985;
+        p.vy += 160 * dt;
+        p.x += p.vx * dt;
+        p.y += p.vy * dt;
+        var s = p.r * dpr;
+        g.globalAlpha = (1 - p.life / p.max) * .95;
+        // Тень под крупинкой: так песок виден и на светлых дюнах, и на кремовом фоне.
+        g.fillStyle = "rgba(64, 38, 16, .55)";
+        g.fillRect((p.x + .7) * dpr, (p.y + .9) * dpr, s, s);
+        g.fillStyle = p.c;
+        g.fillRect(p.x * dpr, p.y * dpr, s, s);
+      }
+      g.globalAlpha = 1;
+      if (grains.length) requestAnimationFrame(tick);
+      else running = false;
+    }
+
+    window.addEventListener("mousemove", function (e) {
+      if (px === null) { px = e.clientX; py = e.clientY; return; }
+      var dx = e.clientX - px, dy = e.clientY - py;
+      carry += Math.sqrt(dx * dx + dy * dy);
+      var n = Math.min(Math.floor(carry / STEP), 6);
+      carry -= n * STEP;
+      if (carry > STEP) carry = 0;
+      for (var k = 1; k <= n; k++) spawn(px + dx * k / n, py + dy * k / n);
+      px = e.clientX; py = e.clientY;
+      if (!running && grains.length) {
+        running = true;
+        last = performance.now();
+        requestAnimationFrame(tick);
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>
