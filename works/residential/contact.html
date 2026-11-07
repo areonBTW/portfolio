@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ru" data-lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Обсудить проект · Areon Interiors</title>
+<meta name="description" content="Пять вопросов о квартире или доме и телефон студии. Демо-сайт из портфолио areon, форма ничего не отправляет · Enquiry form of a fictional interior design studio, a portfolio demo">
+<meta name="theme-color" content="#161513">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/inter-tight-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="canonical" href="https://areonbtw.github.io/portfolio/works/residential/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Areon Interiors">
+<meta property="og:url" content="https://areonbtw.github.io/portfolio/works/residential/contact.html">
+<meta property="og:title" content="Обсудить проект · Areon Interiors">
+<meta property="og:description" content="Пять вопросов о квартире или доме и телефон студии. Демо-сайт из портфолио areon, форма ничего не отправляет · Enquiry form of a fictional interior design studio, a portfolio demo">
+<!-- Absolute URL only: Telegram ignores relative og:image -->
+<meta property="og:image" content="https://areonbtw.github.io/portfolio/works/residential/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="css/style.css">
+<script>
+  // Set the language before first paint so the other language never flashes
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem("lang"); } catch (e) {}
+    var nav = ((navigator.languages && navigator.languages[0]) || navigator.language || "en").toLowerCase();
+    var lang = saved === "ru" || saved === "en" ? saved : (nav.indexOf("ru") === 0 ? "ru" : "en");
+    document.documentElement.dataset.lang = lang;
+    document.documentElement.lang = lang;
+  })();
+</script>
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap header__inner">
+    <a class="logo" href="./">Areon Interiors</a>
+    <nav class="nav" aria-label="Main">
+      <a href="projects.html"><span class="ru">Проекты</span><span class="en">Projects</span></a>
+      <a href="services.html"><span class="ru">Услуги</span><span class="en">Services</span></a>
+      <a href="studio.html"><span class="ru">Студия</span><span class="en">Studio</span></a>
+      <a href="contact.html" aria-current="page"><span class="ru">Контакты</span><span class="en">Contact</span></a>
+    </nav>
+    <div class="header__actions">
+      <button id="lang" class="lang" type="button" aria-label="Switch language / Сменить язык"><span class="lang__opt" data-l="ru">RU</span><span class="lang__opt" data-l="en">EN</span></button>
+      <a class="btn btn--primary btn--sm" href="contact.html"><span class="ru">Обсудить проект</span><span class="en">Discuss a&nbsp;project</span></a>
+      <button id="menu-btn" class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="ru">Меню</span><span class="en">Menu</span></button>
+    </div>
+  </div>
+  <div id="menu" class="menu">
+    <ul class="wrap menu__list">
+      <li><a href="projects.html"><span class="ru">Проекты</span><span class="en">Projects</span></a></li>
+      <li><a href="services.html"><span class="ru">Услуги</span><span class="en">Services</span></a></li>
+      <li><a href="studio.html"><span class="ru">Студия</span><span class="en">Studio</span></a></li>
+      <li><a href="contact.html" aria-current="page"><span class="ru">Контакты</span><span class="en">Contact</span></a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<section class="contact-page">
+    <div class="wrap contact">
+      <div>
+        <h1 class="page-title"><span class="ru">Обсудить проект</span><span class="en">Discuss a&nbsp;project</span></h1>
+        <p class="page-lead ru">Пять вопросов о&nbsp;квартире или доме займут пару минут. Мы&nbsp;перезвоним в&nbsp;течение дня и&nbsp;назовём примерную смету и&nbsp;сроки.</p>
+<p class="page-lead en">Five questions about your apartment or&nbsp;house take a&nbsp;couple of&nbsp;minutes. We’ll call back within a&nbsp;day with a&nbsp;rough estimate and timeline.</p>
+      </div>
+
+      <form id="wizard" class="wizard" action="#" novalidate aria-labelledby="wizard-title">
+        <h2 id="wizard-title" class="sr-only"><span class="ru">Заявка</span><span class="en">Enquiry</span></h2>
+        <div class="wizard__progress">
+          <span><span class="ru">Шаг <span data-cur>1</span> из&nbsp;5</span><span class="en">Step <span data-cur>1</span> of&nbsp;5</span></span>
+          <div class="bar" aria-hidden="true"><span></span></div>
+        </div>
+
+        <fieldset class="wizard__step is-active">
+          <legend class="wizard__q" tabindex="-1"><span class="ru">Что за&nbsp;объект?</span><span class="en">What kind of&nbsp;property?</span></legend>
+          <div class="options" data-check="choice">
+            <label class="option"><input type="radio" name="type" value="flat"><span><span class="ru">Квартира</span><span class="en">Apartment</span></span></label>
+            <label class="option"><input type="radio" name="type" value="house"><span><span class="ru">Загородный дом</span><span class="en">Country house</span></span></label>
+            <label class="option"><input type="radio" name="type" value="other"><span><span class="ru">Другое</span><span class="en">Other</span></span></label>
+          </div>
+          <p class="error" data-err="choice" role="alert" hidden><span class="ru">Выберите один вариант</span><span class="en">Choose one option</span></p>
+        </fieldset>
+
+        <fieldset class="wizard__step">
+          <legend class="wizard__q" tabindex="-1"><span class="ru">Какая площадь?</span><span class="en">How big is&nbsp;it?</span></legend>
+          <div class="inputs">
+            <label class="input-label"><span class="sr-only"><span class="ru">Площадь</span><span class="en">Area</span></span>
+              <span class="input-wrap"><input class="input input--unit" type="text" name="area" inputmode="decimal" autocomplete="off" placeholder="120" data-check="area"><span class="input-unit"><span class="ru">м²</span><span class="en">m²</span></span></span>
+            </label>
+            <p class="hint"><span class="ru">Можно примерно</span><span class="en">A&nbsp;rough figure is&nbsp;fine</span></p>
+          </div>
+          <p class="error" data-err="area" role="alert" hidden><span class="ru">Укажите площадь числом от&nbsp;10 до&nbsp;2000</span><span class="en">Enter the area as&nbsp;a number from 10 to&nbsp;2000</span></p>
+        </fieldset>
+
+        <fieldset class="wizard__step">
+          <legend class="wizard__q" tabindex="-1"><span class="ru">Какой стиль ближе?</span><span class="en">Which style is&nbsp;closer to&nbsp;you?</span></legend>
+          <div class="options" data-check="choice">
+            <label class="option"><input type="radio" name="look" value="classic"><span><span class="ru">Спокойная классика</span><span class="en">Calm classic</span></span></label>
+            <label class="option"><input type="radio" name="look" value="minimal"><span><span class="ru">Минимализм</span><span class="en">Minimalism</span></span></label>
+            <label class="option"><input type="radio" name="look" value="natural"><span><span class="ru">Дерево и&nbsp;камень</span><span class="en">Wood and stone</span></span></label>
+            <label class="option"><input type="radio" name="look" value="unsure"><span><span class="ru">Пока не&nbsp;знаю</span><span class="en">Not sure yet</span></span></label>
+          </div>
+          <p class="error" data-err="choice" role="alert" hidden><span class="ru">Выберите один вариант</span><span class="en">Choose one option</span></p>
+        </fieldset>
+
+        <fieldset class="wizard__step">
+          <legend class="wizard__q" tabindex="-1"><span class="ru">Когда хотите начать?</span><span class="en">When would you like to&nbsp;start?</span></legend>
+          <div class="options" data-check="choice">
+            <label class="option"><input type="radio" name="start" value="month"><span><span class="ru">В&nbsp;ближайший месяц</span><span class="en">Within a&nbsp;month</span></span></label>
+            <label class="option"><input type="radio" name="start" value="half-year"><span><span class="ru">В&nbsp;течение полугода</span><span class="en">Within six months</span></span></label>
+            <label class="option"><input type="radio" name="start" value="looking"><span><span class="ru">Пока присматриваюсь</span><span class="en">Just looking for now</span></span></label>
+          </div>
+          <p class="error" data-err="choice" role="alert" hidden><span class="ru">Выберите один вариант</span><span class="en">Choose one option</span></p>
+        </fieldset>
+
+        <fieldset class="wizard__step">
+          <legend class="wizard__q" tabindex="-1"><span class="ru">Как с&nbsp;вами связаться?</span><span class="en">How can we&nbsp;reach you?</span></legend>
+          <div class="inputs">
+            <label class="input-label"><span class="ru">Имя</span><span class="en">Name</span>
+              <input class="input" type="text" name="name" autocomplete="name" data-check="name">
+            </label>
+            <p class="error" data-err="name" role="alert" hidden><span class="ru">Напишите, как к&nbsp;вам обращаться</span><span class="en">Tell us&nbsp;what to&nbsp;call you</span></p>
+            <label class="input-label"><span class="ru">Телефон</span><span class="en">Phone</span>
+              <input class="input" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+7 (000) 000-00-00" data-check="phone">
+            </label>
+            <p class="error" data-err="phone" role="alert" hidden><span class="ru">Проверьте номер: нужно 11 цифр</span><span class="en">Check the number: it&nbsp;needs 11 digits</span></p>
+          </div>
+        </fieldset>
+        <div class="wizard__nav">
+          <button class="btn btn--ghost wizard__back" type="button"><span class="ru">Назад</span><span class="en">Back</span></button>
+          <button class="btn btn--primary" type="submit"><span class="next-label--go"><span class="ru">Дальше</span><span class="en">Next</span></span><span class="next-label--send"><span class="ru">Отправить заявку</span><span class="en">Send request</span></span><span class="arrow" aria-hidden="true">→</span></button>
+        </div>
+        <div class="wizard__done" hidden>
+          <h3 class="wizard__q" tabindex="-1"><span class="ru">Заявка принята</span><span class="en">Request received</span></h3>
+          <p class="ru">Это демо-сайт, заявка никуда не&nbsp;ушла и&nbsp;звонка не&nbsp;будет. Сайт сделал <a href="../../">areon&nbsp;↗</a></p>
+          <p class="en">This is&nbsp;a&nbsp;demo website: the request went nowhere and nobody will call. Website by&nbsp;<a href="../../">areon&nbsp;↗</a></p>
+          <a class="btn btn--primary" href="./"><span class="ru">На&nbsp;главную</span><span class="en">Back to&nbsp;home</span></a>
+        </div>
+      </form>
+
+      <dl class="contact__list">
+        <div><dt><span class="ru">Телефон</span><span class="en">Phone</span></dt><dd class="num">+7 (000) 000-00-00</dd></div>
+        <div><dt><span class="ru">Часы</span><span class="en">Hours</span></dt><dd><span class="ru">По&nbsp;будням с&nbsp;10 до&nbsp;19</span><span class="en">Weekdays, 10:00 to&nbsp;19:00</span></dd></div>
+        <div><dt><span class="ru">Город</span><span class="en">City</span></dt><dd><span class="ru">Санкт-Петербург, выезжаем на&nbsp;объекты по&nbsp;городу и&nbsp;области</span><span class="en">Saint Petersburg; we&nbsp;visit sites in&nbsp;the city and the region</span></dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <p class="footer__label"><span class="ru">Студия</span><span class="en">Studio</span></p>
+        <p><span class="ru">Санкт-Петербург</span><span class="en">Saint Petersburg</span></p>
+        <p class="num">+7 (000) 000-00-00</p>
+      </div>
+      <div class="footer__col">
+        <p class="footer__label"><span class="ru">Разделы</span><span class="en">Pages</span></p>
+        <a href="projects.html"><span class="ru">Проекты</span><span class="en">Projects</span></a>
+        <a href="services.html"><span class="ru">Услуги</span><span class="en">Services</span></a>
+        <a href="studio.html"><span class="ru">Студия</span><span class="en">Studio</span></a>
+        <a href="contact.html"><span class="ru">Контакты</span><span class="en">Contact</span></a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__label"><span class="ru">Заявка</span><span class="en">Enquiry</span></p>
+        <a href="contact.html"><span class="ru">Обсудить проект</span><span class="en">Discuss a&nbsp;project</span></a>
+      </div>
+    </div>
+    <p class="footer__note">
+      <span class="ru">Демо-сайт: студия выдуманная, проекты и&nbsp;цены придуманы для портфолио. Дизайн и&nbsp;разработка: <a href="../../">areon&nbsp;↗</a></span>
+      <span class="en">Demo website: the studio is&nbsp;fictional, projects and prices were made up for a&nbsp;portfolio. Design and development: <a href="../../">areon&nbsp;↗</a></span>
+    </p>
+    <p class="wordmark reveal" aria-hidden="true">AREON INTERIORS</p>
+  </div>
+</footer>
+
+<a class="badge" href="../../"><span>by areon</span><span aria-hidden="true">↗</span></a>
+
+<script src="js/main.js"></script>
+</body>
+</html>

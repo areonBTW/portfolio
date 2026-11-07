@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ru" data-lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Areon Interiors · студия интерьеров в Петербурге</title>
+<meta name="description" content="Areon Interiors: интерьеры для квартир и загородных домов в Петербурге. Демо-сайт из портфолио areon · Interior design studio in Saint Petersburg, a portfolio demo">
+<meta name="theme-color" content="#161513">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/inter-tight-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="canonical" href="https://areonbtw.github.io/portfolio/works/residential/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Areon Interiors">
+<meta property="og:url" content="https://areonbtw.github.io/portfolio/works/residential/">
+<meta property="og:title" content="Areon Interiors · интерьеры для квартир и загородных домов">
+<meta property="og:description" content="Студия интерьеров в Петербурге. Демо-сайт из портфолио areon.">
+<!-- Absolute URL only: Telegram ignores relative og:image -->
+<meta property="og:image" content="https://areonbtw.github.io/portfolio/works/residential/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="css/style.css">
+<script>
+  // Set the language before first paint so the other language never flashes
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem("lang"); } catch (e) {}
+    var nav = ((navigator.languages && navigator.languages[0]) || navigator.language || "en").toLowerCase();
+    var lang = saved === "ru" || saved === "en" ? saved : (nav.indexOf("ru") === 0 ? "ru" : "en");
+    document.documentElement.dataset.lang = lang;
+    document.documentElement.lang = lang;
+  })();
+</script>
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap header__inner">
+    <a class="logo" href="./">Areon Interiors</a>
+    <nav class="nav" aria-label="Main">
+      <a href="projects.html"><span class="ru">Проекты</span><span class="en">Projects</span></a>
+      <a href="services.html"><span class="ru">Услуги</span><span class="en">Services</span></a>
+      <a href="studio.html"><span class="ru">Студия</span><span class="en">Studio</span></a>
+      <a href="contact.html"><span class="ru">Контакты</span><span class="en">Contact</span></a>
+    </nav>
+    <div class="header__actions">
+      <button id="lang" class="lang" type="button" aria-label="Switch language / Сменить язык"><span class="lang__opt" data-l="ru">RU</span><span class="lang__opt" data-l="en">EN</span></button>
+      <a class="btn btn--primary btn--sm" href="contact.html"><span class="ru">Обсудить проект</span><span class="en">Discuss a project</span></a>
+      <button id="menu-btn" class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="ru">Меню</span><span class="en">Menu</span></button>
+    </div>
+  </div>
+  <div id="menu" class="menu">
+    <ul class="wrap menu__list">
+      <li><a href="projects.html"><span class="ru">Проекты</span><span class="en">Projects</span></a></li>
+      <li><a href="services.html"><span class="ru">Услуги</span><span class="en">Services</span></a></li>
+      <li><a href="studio.html"><span class="ru">Студия</span><span class="en">Studio</span></a></li>
+      <li><a href="contact.html"><span class="ru">Контакты</span><span class="en">Contact</span></a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <img class="hero__img" src="img/petrogradskaya-1.webp" srcset="img/petrogradskaya-1-sm.webp 768w, img/petrogradskaya-1.webp 1536w" sizes="100vw" width="1536" height="1024" alt="Гостиная квартиры на Петроградской: тёмный дуб, лепнина, латунная лампа у дивана" fetchpriority="high">
+    <div class="wrap hero__inner">
+      <div class="hero__content">
+        <p class="eyebrow"><span class="ru">Студия интерьеров в&nbsp;Петербурге</span><span class="en">Interior design studio in&nbsp;Saint Petersburg</span></p>
+        <h1 class="hero__title">
+          <span class="ru">Интерьеры для квартир и&nbsp;загородных домов</span>
+          <span class="en">Interiors for apartments and country houses</span>
+        </h1>
+        <p class="hero__lead ru">Делаем проект, сами ведём ремонт и&nbsp;сдаём дом с&nbsp;расставленной мебелью и&nbsp;повешенными шторами</p>
+        <p class="hero__lead en">We design the project, run the renovation ourselves and hand over the home with the furniture in&nbsp;place and the curtains hung</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="contact.html"><span class="ru">Обсудить проект</span><span class="en">Discuss a project</span><span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="#projects"><span class="ru">Смотреть проекты</span><span class="en">See projects</span></a>
+        </div>
+      </div>
+      <p class="hero__caption">
+        <span><span class="ru">На фото: квартира на&nbsp;Петроградской</span><span class="en">In the photo: apartment on&nbsp;the Petrograd Side</span></span>
+        <span class="dim"><span class="dim__line"></span><span class="ru">140&nbsp;м²</span><span class="en">140&nbsp;m²</span><span class="dim__line"></span></span>
+      </p>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="section-title"><span class="ru">Проекты</span><span class="en">Projects</span></h2>
+        <a class="link" href="projects.html"><span class="ru">Все проекты</span><span class="en">All projects</span><span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="projects">
+        <a class="project project--wide" href="project-petrogradskaya.html">
+          <div class="project__media reveal-drop">
+            <img src="img/petrogradskaya-2.webp" srcset="img/petrogradskaya-2-sm.webp 768w, img/petrogradskaya-2.webp 1536w" sizes="(min-width: 1440px) 1344px, 100vw" width="1536" height="1024" alt="Столовая с дубовым столом и латунной лампой" loading="lazy" decoding="async">
+          </div>
+          <div class="project__body reveal">
+            <div class="project__top">
+              <h3 class="project__title"><span class="ru">Квартира на&nbsp;Петроградской</span><span class="en">Apartment on&nbsp;the Petrograd Side</span></h3>
+              <p class="project__meta"><span class="dim"><span class="dim__line"></span><span class="ru">140&nbsp;м²</span><span class="en">140&nbsp;m²</span><span class="dim__line"></span></span><span class="num">2025</span></p>
+            </div>
+            <p class="project__desc ru">Дом 1912 года. Сохранили лепнину и&nbsp;потолки 3,6&nbsp;м, гостиную обшили тёмным дубом.</p>
+            <p class="project__desc en">A&nbsp;building from 1912. We kept the stucco and the 3.6&nbsp;m ceilings and panelled the living room in&nbsp;dark oak.</p>
+          </div>
+        </a>
+
+        <a class="project" href="project-krestovsky.html">
+          <div class="project__media reveal-drop">
+            <img src="img/krestovsky-1.webp" srcset="img/krestovsky-1-sm.webp 768w, img/krestovsky-1.webp 1536w" sizes="(min-width: 900px) 50vw, 100vw" width="1536" height="1024" alt="Минималистичная гостиная с видом на воду и Лахту" loading="lazy" decoding="async">
+          </div>
+          <div class="project__body reveal">
+            <div class="project__top">
+              <h3 class="project__title"><span class="ru">Квартира на&nbsp;Крестовском</span><span class="en">Apartment on&nbsp;Krestovsky Island</span></h3>
+              <p class="project__meta"><span class="dim"><span class="dim__line"></span><span class="ru">110&nbsp;м²</span><span class="en">110&nbsp;m²</span><span class="dim__line"></span></span><span class="num">2025</span></p>
+            </div>
+            <p class="project__desc ru">Новый дом у&nbsp;воды. Стены из&nbsp;тёплой известковой штукатурки, пол из&nbsp;микроцемента, мебель из&nbsp;травертина и&nbsp;льна.</p>
+            <p class="project__desc en">A&nbsp;new building by&nbsp;the water. Warm lime plaster walls, a&nbsp;microcement floor, travertine and linen furniture.</p>
+          </div>
+        </a>
+
+        <a class="project" href="project-komarovo.html">
+          <div class="project__media reveal-drop">
+            <img src="img/komarovo-1.webp" srcset="img/komarovo-1-sm.webp 768w, img/komarovo-1.webp 1536w" sizes="(min-width: 900px) 50vw, 100vw" width="1536" height="1024" alt="Гостиная загородного дома с каменным камином и окнами в сосновый лес" loading="lazy" decoding="async">
+          </div>
+          <div class="project__body reveal">
+            <div class="project__top">
+              <h3 class="project__title"><span class="ru">Дом в&nbsp;Комарово</span><span class="en">House in&nbsp;Komarovo</span></h3>
+              <p class="project__meta"><span class="dim"><span class="dim__line"></span><span class="ru">210&nbsp;м²</span><span class="en">210&nbsp;m²</span><span class="dim__line"></span></span><span class="num">2024</span></p>
+            </div>
+            <p class="project__desc ru">Загородный дом в&nbsp;сосновом лесу у&nbsp;залива. Камин в&nbsp;гостиной и&nbsp;окна от&nbsp;пола до&nbsp;потолка.</p>
+            <p class="project__desc en">A&nbsp;country house in&nbsp;a&nbsp;pine forest by&nbsp;the Gulf. A&nbsp;fireplace in&nbsp;the living room and floor-to-ceiling windows.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="section-title"><span class="ru">Как мы работаем</span><span class="en">How we work</span></h2>
+      </div>
+      <ol class="steps">
+        <li class="step reveal">
+          <p class="step__num">01</p>
+          <h3 class="step__title"><span class="ru">Знакомство</span><span class="en">Getting to know you</span></h3>
+          <p class="step__text ru">Приезжаем на&nbsp;объект, делаем замеры и&nbsp;подробно расспрашиваем, как вы&nbsp;живёте: кто встаёт раньше, сколько у&nbsp;вас книг.</p>
+          <p class="step__text en">We&nbsp;visit the site, take measurements and ask in&nbsp;detail how you live: who gets up first, how many books you have.</p>
+        </li>
+        <li class="step reveal">
+          <p class="step__num">02</p>
+          <h3 class="step__title"><span class="ru">Проект</span><span class="en">Design</span></h3>
+          <p class="step__text ru">Планировка, визуализация каждой комнаты и&nbsp;рабочие чертежи. Вы&nbsp;видите интерьер до&nbsp;начала ремонта.</p>
+          <p class="step__text en">Floor plan, renderings of&nbsp;every room and working drawings. You see the interior before the renovation starts.</p>
+        </li>
+        <li class="step reveal">
+          <p class="step__num">03</p>
+          <h3 class="step__title"><span class="ru">Смета</span><span class="en">Estimate</span></h3>
+          <p class="step__text ru">Ремонт и&nbsp;мебель считаем вместе с&nbsp;проектом, поэтому бюджет известен заранее.</p>
+          <p class="step__text en">We&nbsp;price the renovation and furniture together with the design, so&nbsp;the budget is&nbsp;known in&nbsp;advance.</p>
+        </li>
+        <li class="step reveal">
+          <p class="step__num">04</p>
+          <h3 class="step__title"><span class="ru">Стройка и&nbsp;надзор</span><span class="en">Build and supervision</span></h3>
+          <p class="step__text ru">Архитектор приезжает на&nbsp;объект каждую неделю и&nbsp;принимает работу строителей по&nbsp;этапам.</p>
+          <p class="step__text en">An&nbsp;architect visits the site every week and signs off the builders’ work stage by&nbsp;stage.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="section-title"><span class="ru">Услуги</span><span class="en">Services</span></h2>
+        <a class="link" href="services.html"><span class="ru">Подробнее об&nbsp;услугах</span><span class="en">More about services</span><span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+      <ul class="prices">
+        <li class="price reveal">
+          <span class="price__name"><span class="ru">Дизайн-проект</span><span class="en">Design project</span></span>
+          <span class="price__value"><span class="ru">от&nbsp;3&nbsp;500&nbsp;₽/м²</span><span class="en">from 3,500&nbsp;₽/m²</span></span>
+        </li>
+        <li class="price reveal">
+          <span class="price__name"><span class="ru">Авторский надзор</span><span class="en">Architectural supervision</span></span>
+          <span class="price__value"><span class="ru">от&nbsp;40&nbsp;000&nbsp;₽ в&nbsp;месяц</span><span class="en">from 40,000&nbsp;₽ per month</span></span>
+        </li>
+        <li class="price reveal">
+          <span class="price__name"><span class="ru">Комплектация мебелью и&nbsp;материалами</span><span class="en">Furniture and materials sourcing</span></span>
+          <span class="price__value"><span class="ru">от&nbsp;7% от&nbsp;суммы закупки</span><span class="en">from 7% of&nbsp;the purchase total</span></span>
+        </li>
+        <li class="price reveal">
+          <span class="price__name"><span class="ru">Под ключ: проект, ремонт, мебель</span><span class="en">Turnkey: design, renovation, furniture</span></span>
+          <span class="price__value"><span class="ru">от&nbsp;25&nbsp;000&nbsp;₽/м²</span><span class="en">from 25,000&nbsp;₽/m²</span></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap cta">
+      <div class="cta__media reveal-img">
+        <img src="img/krestovsky-4.webp" srcset="img/krestovsky-4-sm.webp 768w, img/krestovsky-4.webp 1536w" sizes="(min-width: 960px) 50vw, 100vw" width="1536" height="1024" alt="Травертиновый столик с каменной чашей в тёплом свете лампы" loading="lazy" decoding="async">
+      </div>
+      <div class="reveal">
+        <h2 class="section-title"><span class="ru">Расскажите о&nbsp;своём доме</span><span class="en">Tell us about your home</span></h2>
+        <p class="cta__lead ru">Пять вопросов о&nbsp;квартире или доме займут пару минут. Мы&nbsp;перезвоним в&nbsp;течение дня и&nbsp;назовём примерную смету и&nbsp;сроки.</p>
+        <p class="cta__lead en">Five questions about your apartment or&nbsp;house take a&nbsp;couple of&nbsp;minutes. We’ll call back within a&nbsp;day with a&nbsp;rough estimate and timeline.</p>
+        <a class="btn btn--primary" href="contact.html"><span class="ru">Обсудить проект</span><span class="en">Discuss a project</span><span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <p class="footer__label"><span class="ru">Студия</span><span class="en">Studio</span></p>
+        <p><span class="ru">Санкт-Петербург</span><span class="en">Saint Petersburg</span></p>
+        <p class="num">+7 (000) 000-00-00</p>
+      </div>
+      <div class="footer__col">
+        <p class="footer__label"><span class="ru">Разделы</span><span class="en">Pages</span></p>
+        <a href="projects.html"><span class="ru">Проекты</span><span class="en">Projects</span></a>
+        <a href="services.html"><span class="ru">Услуги</span><span class="en">Services</span></a>
+        <a href="studio.html"><span class="ru">Студия</span><span class="en">Studio</span></a>
+        <a href="contact.html"><span class="ru">Контакты</span><span class="en">Contact</span></a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__label"><span class="ru">Заявка</span><span class="en">Enquiry</span></p>
+        <a href="contact.html"><span class="ru">Обсудить проект</span><span class="en">Discuss a project</span></a>
+      </div>
+    </div>
+    <p class="footer__note">
+      <span class="ru">Демо-сайт: студия выдуманная, проекты и&nbsp;цены придуманы для портфолио. Дизайн и&nbsp;разработка: <a href="../../">areon&nbsp;↗</a></span>
+      <span class="en">Demo website: the studio is&nbsp;fictional, projects and prices were made up for a&nbsp;portfolio. Design and development: <a href="../../">areon&nbsp;↗</a></span>
+    </p>
+    <p class="wordmark reveal" aria-hidden="true">AREON INTERIORS</p>
+  </div>
+</footer>
+
+<a class="badge" href="../../"><span>by areon</span><span aria-hidden="true">↗</span></a>
+
+<script src="js/main.js"></script>
+</body>
+</html>
