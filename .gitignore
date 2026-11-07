@@ -8,6 +8,8 @@ output/
 
 # Video sources: only the extracted frames are published
 works/cosmos/source/
+*.mp4
+*.mov
 
 # Local working files, not part of the published site
 CLAUDE.md
