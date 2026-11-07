@@ -90,14 +90,16 @@ h1, h2, h3, p { margin: 0; }
 .btn:hover .btn__arrow { transform: translateX(3px); }
 
 /* Section head */
-.section-head { display: flex; align-items: baseline; justify-content: space-between; padding: 16px 0; border-top: 1px solid var(--line); margin-bottom: 24px; }
+.section-head { display: flex; align-items: baseline; justify-content: space-between; padding: 16px 0; border-top: 1px solid var(--line); }
 .section-head__title { font: 500 16px/1.25 var(--f-display); }
 .section-head__count { font-size: 13px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+/* Approved disclaimer: the works are concept projects, not client commissions */
+.works__note { margin: 0 0 24px; max-width: 36rem; font-size: 14px; color: var(--ink-2); }
 
 /* Works grid: one column on phones, two on wider screens; a lone card takes the full width */
 .grid { display: grid; grid-template-columns: 1fr; gap: 48px 32px; }
 @media (min-width: 900px) {
-  .section-head { margin-bottom: 32px; }
+  .works__note { margin-bottom: 32px; }
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid > li:only-child { grid-column: 1 / -1; }
 }
